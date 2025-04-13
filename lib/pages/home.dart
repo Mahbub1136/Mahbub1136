@@ -1,85 +1,56 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  final List<Map<String, dynamic>> packages = const [
-    {
-      "name": "Monthly Membership",
-      "price": "\$29.99",
-      "image": "assets/images/gym.png"
-    },
-    {
-      "name": "Personal Training",
-      "price": "\$49.99",
-      "image": "assets/images/gym.png"
-    },
-    {
-      "name": "Yoga Classes",
-      "price": "\$19.99",
-      "image": "assets/images/gym.png"
-    },
-  ];
+class WelcomePage extends StatelessWidget {
+  const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("🏋️ Mahbub's GYM Center"),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: packages.length,
-          itemBuilder: (context, index) {
-            final package = packages[index];
-            return Card(
-              margin: const EdgeInsets.only(bottom: 16),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              elevation: 4,
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset(
-                      package["image"],
-                      height: 150,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      package["name"],
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      package["price"],
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.blueGrey,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    ElevatedButton(
-                      onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Enrolling in ${package["name"]}")),
-                        );
-                      },
-                      child: const Text("Enroll Now"),
-                    ),
-                  ],
+      backgroundColor: const Color(0xFFF0F8FF),
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.waving_hand, size: 80, color: Colors.teal),
+                const SizedBox(height: 20),
+                const Text(
+                  "Welcome to Titan App!",
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.teal,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-              ),
-            );
-          },
+                const SizedBox(height: 16),
+                const Text(
+                  "Manage your events, stay organized, and explore awesome features with ease.",
+                  style: TextStyle(fontSize: 16),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 40),
+                ElevatedButton(
+                  onPressed: () {
+                    // Navigate to login or home
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+                    backgroundColor: Colors.teal,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text(
+                    "Get Started",
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
