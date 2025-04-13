@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  final List<Map<String, dynamic>> products = const [
+  final List<Map<String, dynamic>> packages = const [
     {
-      "name": "Sneakers",
-      "price": "\$49.99",
-      "image": "assets/images/sample.png"
-    },
-    {
-      "name": "Wrist Watch",
-      "price": "\$89.99",
-      "image": "assets/images/sample.png"
-    },
-    {
-      "name": "Backpack",
+      "name": "Monthly Membership",
       "price": "\$29.99",
-      "image": "assets/images/sample.png"
+      "image": "assets/images/gym.png"
+    },
+    {
+      "name": "Personal Training",
+      "price": "\$49.99",
+      "image": "assets/images/gym.png"
+    },
+    {
+      "name": "Yoga Classes",
+      "price": "\$19.99",
+      "image": "assets/images/gym.png"
     },
   ];
 
@@ -25,15 +25,15 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("🛍️ Mahbub's Store"),
+        title: const Text("🏋️ Pritom's GYM Center"),
         centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView.builder(
-          itemCount: products.length,
+          itemCount: packages.length,
           itemBuilder: (context, index) {
-            final product = products[index];
+            final package = packages[index];
             return Card(
               margin: const EdgeInsets.only(bottom: 16),
               shape: RoundedRectangleBorder(
@@ -46,34 +46,34 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.asset(
-                      product["image"],
+                      package["image"],
                       height: 150,
                       width: double.infinity,
                       fit: BoxFit.cover,
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      product["name"],
+                      package["name"],
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      product["price"],
+                      package["price"],
                       style: const TextStyle(
                         fontSize: 16,
-                        color: Colors.teal,
+                        color: Colors.blueGrey,
                       ),
                     ),
                     const SizedBox(height: 10),
                     ElevatedButton(
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Buying ${product["name"]}")),
+                          SnackBar(content: Text("Enrolling in ${package["name"]}")),
                         );
                       },
-                      child: const Text("Buy Now"),
+                      child: const Text("Enroll Now"),
                     ),
                   ],
                 ),
